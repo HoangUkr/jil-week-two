@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  django:
+    image: my-crm
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/crm
+    ports:
+      - 8000:8000
+    depends_on: 
+      - db
+    restart: always
+  db:
+    image: nouchka/sqlite3
+    restart: always
